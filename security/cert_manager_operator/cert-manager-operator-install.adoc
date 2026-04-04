@@ -6,12 +6,18 @@ include::_attributes/common-attributes.adoc[]
 
 toc::[]
 
+[role="_abstract"]
+The {cert-manager-operator} is not installed in {product-title} by default. You can install the {cert-manager-operator} by using the web console.
+
+[NOTE]
+====
+The operator sets `features.operators.openshift.io/token-auth-aws`, `features.operators.openshift.io/token-auth-azure`, `features.operators.openshift.io/token-auth-gcp` annotations in the operator CSV, and console asks to provide the relevant credentials details when these annotations are set. Currently, the operator does not make use of the values collected by the console and users should follow https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/security_and_compliance/cert-manager-operator-for-red-hat-openshift. Users can provide any dummy value when asked for the input. For example, when installing on ROSA, the `identity-provider-arn` is asked and any value can be provided to proceed.
+====
+
 [IMPORTANT]
 ====
 The {cert-manager-operator} version 1.15 or later supports the `AllNamespaces`, `SingleNamespace`, and `OwnNamespace` installation modes. Earlier versions, such as 1.14, support only the `SingleNamespace` and `OwnNamespace` installation modes.
 ====
-
-The {cert-manager-operator} is not installed in {product-title} by default. You can install the {cert-manager-operator} by using the web console.
 
 == Installing the {cert-manager-operator}
 // Installing the {cert-manager-operator} using the web console
