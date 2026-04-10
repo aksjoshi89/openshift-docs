@@ -4663,3 +4663,10 @@ include::modules/zstream-4-13-64-about.adoc[leveloffset=+2]
 include::modules/zstream-4-13-64-bug-fixes.adoc[leveloffset=+2]
 
 include::modules/zstream-4-13-64-updating.adoc[leveloffset=+2]
+
+//4.13.65
+include::modules/zstream-4-13-65-about.adoc[leveloffset=+2]
+
+include::modules/zstream-4-13-65-bug-fixes.adoc[leveloffset=+2]
+
+include::modules/zstream-4-13-65-updating.adoc[leveloffset=+2]

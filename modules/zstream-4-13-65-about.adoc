@@ -1,0 +1,15 @@
+:_mod-docs-content-type: CONCEPT
+[id="zstream-4-13-65-about_{context}"]
+= RHSA-2026:7252 - {product-title} 4.13.65 bug fix and security updates
+
+Issued: 16 April 2026
+
+[role="_abstract"]
+{product-title} release 4.13.65, which includes security updates, is now available. The list of bug fixes that are included in the update is documented in the link:https://access.redhat.com/errata/RHSA-2026:7252[RHSA-2026:7252] advisory. The RPM packages that are included in the update are provided by the link:https://access.redhat.com/errata/RHSA-2026:7238[RHSA-2026:7238] advisory.
+
+You can view the container images in this release by running the following command:
+
+[source,terminal]
+----
+$ oc adm release info 4.13.65 --pullspecs
+----

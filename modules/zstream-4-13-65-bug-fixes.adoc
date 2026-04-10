@@ -1,0 +1,6 @@
+:_mod-docs-content-type: REFERENCE
+[id="zstream-4-13-65-bug-fixes_{context}"]
+= Fixed issues
+
+[role="_abstract"]
+* Before this update, service account creation with the `openshift/local/google` provider in earlier {product-title} versions caused inconsistent results during service account creation. As a consequence, errors occurred during the apply process, which affected cluster provisioning in {gcp-first}. With this release, Terraform and the provider are upgraded. As a result, service account creation issues are resolved, which reduces inconsistencies during cluster installation in {gcp-short}. (link:https://issues.redhat.com/browse/OCPBUGS-76931[OCPBUGS-76931])
