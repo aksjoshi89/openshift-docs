@@ -436,6 +436,11 @@ pod to fail.
 
 Security context constraints (SCCs) have a priority field that affects the ordering when attempting to validate a request by the admission controller.
 
+[WARNING]
+====
+Setting a Security Context Constraint (SCC) priority greater than 0 or higher than the default OpenShift SCCs can cause critical cluster instability.
+====
+
 A priority value of `0` is the lowest possible priority. A nil priority is considered a `0`, or lowest, priority. Higher priority SCCs are moved to the front of the set when sorting.
 
 When the complete set of available SCCs is determined, the SCCs are ordered in the following manner:

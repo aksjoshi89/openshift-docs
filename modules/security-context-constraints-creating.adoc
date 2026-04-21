@@ -18,6 +18,11 @@ If the default security context constraints (SCCs) do not satisfy your applicati
 Creating and modifying your own SCCs are advanced operations that might cause instability to your cluster. If you have questions about using your own SCCs, contact Red Hat Support. For information about contacting Red Hat support, see _Getting support_.
 ====
 
+[WARNING]
+====
+Setting a Security Context Constraint (SCC) priority greater than 0 or higher than the default OpenShift SCCs can cause critical cluster instability.
+====
+
 ifdef::openshift-dedicated[]
 [NOTE]
 ====
