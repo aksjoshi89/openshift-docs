@@ -24,6 +24,11 @@ You can update your virtual hardware immediately or schedule an update in vCente
 * Before upgrading OpenShift 4.12 to OpenShift 4.13, you must update vSphere to *v8.0 Update 1 or later*; otherwise, the OpenShift 4.12 cluster is marked *un-upgradeable*.
 ====
 
+[WARNING]
+====
+Updating custom API certificates triggers a rolling reboot of the control plane nodes via the Machine Config Operator. These nodes must be updated serially. Ensure each node returns to a Ready state and the `etcd` static pods are healthy before the next node in the sequence begins its update. Failure to do so may result in a loss of etcd quorum and cluster-wide downtime.
+====
+
 // Updating the virtual hardware for control plane nodes on vSphere
 include::modules/update-vsphere-virtual-hardware-on-control-plane-nodes.adoc[leveloffset=+1]
 
