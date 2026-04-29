@@ -11,6 +11,11 @@ cluster CA. You can add one or more alternative certificates that the API
 server will return based on the fully qualified domain name (FQDN) requested by
 the client, for example when a reverse proxy or load balancer is used.
 
+[IMPORTANT]
+====
+Updating or replacing an existing custom API server certificate triggers a configuration change that is synchronized by the Machine Config Operator (MCO). Because the API server certificate is part of the cluster's core trust material, this process will trigger a rolling reboot of the control plane (master) nodes in most environments to ensure the host-level services recognize the new certificate. Plan for a maintenance window that accommodates sequential node reboots.
+====
+
 .Prerequisites
 
 * You must have a certificate for the FQDN and its corresponding private key. Each should be in a separate PEM format file.
@@ -47,6 +52,12 @@ $ oc config view --flatten > kubeconfig-newapi
 
 . Create a secret that contains the certificate chain and private key in the
 `openshift-config` namespace.
++
+[NOTE]
+====
+To ensure the `kube-apiserver` operator and the Machine Config Operator correctly detect a certificate renewal, it is recommended to create a secret with a new name (for example, `api-custom-cert-v2`) rather than overwriting the existing secret.
+====
++
 +
 [source,terminal]
 ----
@@ -120,3 +131,12 @@ If `PROGRESSING` is showing `True`, wait a few minutes and try again.
 ====
 A new revision of the Kubernetes API server only rolls out if the API server named certificate is added for the first time. When the API server named certificate is renewed, a new revision of the Kubernetes API server does not roll out because the `kube-apiserver` pods dynamically reload the updated certificate.
 ====
+
+. Monitor the Machine Config Pools to verify that the control plane nodes have successfully applied the change and finished rebooting.
++
+[source,terminal]
+----
+$ oc get mcp master
+----
++
+An update is successful when the `UPDATED` column for the master pool returns to `True` and `UPDATING` is `False`.
